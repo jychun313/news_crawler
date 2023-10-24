@@ -17,7 +17,8 @@ export_path = '/Users/../../../'
 def parse_naver_search(SEARCH='chatgpt', DATE='2023.01.01', PAGE=1):
     DATE_ = DATE.replace('.', '')
     search_params = urlencode({"query": SEARCH})
-    url = f'https://search.naver.com/search.naver?where=news&sm=tab_pge&{search_params}&sort=2&photo=0&field=0&pd=3&ds={DATE}&de={DATE}&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:rp:from{DATE_}to{DATE_},a:all&start={PAGE}'
+    # url = f'https://search.naver.com/search.naver?where=news&sm=tab_pge&{search_params}&sort=2&photo=0&field=0&pd=3&ds={DATE}&de={DATE}&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:rp:from{DATE_}to{DATE_},a:all&start={PAGE}'
+    url = f'https://search.naver.com/search.naver?where=news&sm=tab_pge&{search_params}&sort=1&photo=0&field=0&pd=3&ds={DATE}&de={DATE}&mynews=0&office_type=0&office_section_code=0&news_office_checked=&office_category=0&service_area=0&nso=so:dd,p:from{DATE_}to{DATE_},a:all&start={PAGE}'
     response = urlopen(url)
     soup = BeautifulSoup(response, "html.parser")  # html에 대하여 접근할 수 있도록
     res = soup.select('a.news_tit')
